@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity } from 'react-native'
 
 export default class Test extends Component {
   componentDidMount() {
-    this.props.navigation.toggleDrawer()
+    // this.props.navigation.toggleDrawer()
   }
 
   render() {

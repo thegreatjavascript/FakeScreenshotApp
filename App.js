@@ -1,7 +1,7 @@
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation'
 import Main from './src/Main'
 import SideBar from './src/common/SideBar'
-import WeiXin from './src/screens/WeiXin'
+import WeiXin from './src/screens/WeiXin/Index'
 import QQ from './src/screens/QQ'
 import { Dimensions } from 'react-native'
 // 禁用所有黄色警告
@@ -14,7 +14,7 @@ const deviceWidth = Dimensions.get('window').width
 const Drawer = createDrawerNavigator(
   { Home: Main, WeiXin: WeiXin, QQ: QQ },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'WeiXin',
     drawerWidth: deviceWidth * 0.6,
     contentOptions: {
       activeTintColor: '#e91e63'

@@ -19,6 +19,7 @@
     "react": "16.6.3",
     "react-native": "0.57.1",
     "react-native-content-loader": "git+ssh://git@github.com:shuiRong/react-native-content-loader.git#master",
+    "react-native-extra-dimensions-android": "^1.2.1",
     "react-native-gesture-handler": "^1.0.12",
     "react-native-git-upgrade": "^0.2.7",
     "react-native-image-picker": "^0.27.2",
