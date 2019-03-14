@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, StatusBar, Platform } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome5'
+import Fab from '../../common/Fab'
 import { height } from '../../utils/rem'
 
 const Header = Platform.select({
@@ -34,6 +34,7 @@ export default class WeiXin extends Component {
           style={{ height: height(767), backgroundColor: 'rgb(234,234,234)' }}
         />
         <Bottom />
+        <Fab />
       </View>
     )
   }
