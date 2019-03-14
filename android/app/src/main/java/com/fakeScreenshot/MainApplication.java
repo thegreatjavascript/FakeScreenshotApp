@@ -3,6 +3,7 @@ package com.FakeScreenshot;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import fr.greweb.reactnativeviewshot.RNViewShotPackage;
 import ca.jaysoo.extradimensions.ExtraDimensionsPackage;
 import com.horcrux.svg.SvgPackage;
 import com.microsoft.codepush.react.CodePush;
@@ -37,6 +38,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNViewShotPackage(),
             new ExtraDimensionsPackage(),
             new SvgPackage(),
           new ImagePickerPackage(),

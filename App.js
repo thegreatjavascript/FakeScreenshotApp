@@ -1,4 +1,6 @@
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation'
+import React from 'react'
+import { Root } from 'native-base'
 import Main from './src/Main'
 import SideBar from './src/common/SideBar'
 import WeiXin from './src/screens/WeiXin/Index'
@@ -23,7 +25,7 @@ const Drawer = createDrawerNavigator(
   }
 )
 
-export default createStackNavigator(
+const Stack = createStackNavigator(
   {
     Drawer: Drawer
   },
@@ -31,4 +33,10 @@ export default createStackNavigator(
     initialRouteName: 'Drawer',
     headerMode: 'none'
   }
+)
+
+export default () => (
+  <Root>
+    <Stack />
+  </Root>
 )

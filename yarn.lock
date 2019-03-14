@@ -7111,6 +7111,11 @@ react-native-vector-icons@6.1.0, react-native-vector-icons@^6.1.0:
     prop-types "^15.6.2"
     yargs "^8.0.2"
 
+react-native-view-shot@^2.5.0:
+  version "2.5.0"
+  resolved "http://registry.npm.taobao.org/react-native-view-shot/download/react-native-view-shot-2.5.0.tgz#428a997f470d3148d0067c5b46abd988ef1aa4c0"
+  integrity sha1-QoqZf0cNMUjQBnxbRqvZiO8apMA=
+
 react-native@*:
   version "0.57.8"
   resolved "http://registry.npm.taobao.org/react-native/download/react-native-0.57.8.tgz#1a840fbe144cd3902cc14313a783ce28efc48cb9"
