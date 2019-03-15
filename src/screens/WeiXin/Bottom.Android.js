@@ -3,12 +3,13 @@ import { View, Text, Image } from 'react-native'
 import { height, width } from '../../utils/rem'
 
 module.exports = class WeiXin extends Component {
+
   render() {
     return (
       <View
         style={{
           backgroundColor: '#F6F6F6',
-          height: height(83),
+          height: width(83),
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'space-between'
@@ -27,7 +28,7 @@ module.exports = class WeiXin extends Component {
           style={{
             backgroundColor: '#FFFFFF',
             width: width(335),
-            height: height(60),
+            height: width(60),
             borderRadius: 3
           }}
         />

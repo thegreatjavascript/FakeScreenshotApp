@@ -10,7 +10,7 @@ module.exports = class WeiXin extends Component {
           backgroundColor: 'rgb(234,234,234)',
           borderBottomColor: '#BBBBBB',
           borderBottomWidth: 0.4,
-          height: height(65),
+          height: width(65),
           alignItems: 'center',
           flexDirection: 'row',
           justifyContent: 'space-between'

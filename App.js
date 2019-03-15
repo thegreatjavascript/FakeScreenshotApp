@@ -1,4 +1,8 @@
-import { createStackNavigator, createDrawerNavigator } from 'react-navigation'
+import {
+  createStackNavigator,
+  createDrawerNavigator,
+  createAppContainer
+} from 'react-navigation'
 import React from 'react'
 import { Root } from 'native-base'
 import Main from './src/Main'
@@ -18,21 +22,20 @@ const Drawer = createDrawerNavigator(
   {
     initialRouteName: 'WeiXin',
     drawerWidth: deviceWidth * 0.6,
-    contentOptions: {
-      activeTintColor: '#e91e63'
-    },
     contentComponent: SideBar
   }
 )
 
-const Stack = createStackNavigator(
-  {
-    Drawer: Drawer
-  },
-  {
-    initialRouteName: 'Drawer',
-    headerMode: 'none'
-  }
+const Stack = createAppContainer(
+  createStackNavigator(
+    {
+      Drawer: Drawer
+    },
+    {
+      initialRouteName: 'Drawer',
+      headerMode: 'none'
+    }
+  )
 )
 
 export default () => (
