@@ -27,9 +27,6 @@ export default class WeiXin extends Component {
           barStyle={'dark-content'}
         />
         <Header />
-        {/* <TouchableOpacity onPress={() => this.props.navigation.openDrawer()}>
-          <Text>weixin</Text>
-        </TouchableOpacity> */}
         <View
           style={{ height: height(767), backgroundColor: 'rgb(234,234,234)' }}
         />
