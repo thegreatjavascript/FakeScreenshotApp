@@ -120,6 +120,23 @@ class RightMessage extends Component {
   }
 }
 
+class Time extends Component {
+  render() {
+    return (
+      <Text
+        style={{
+          color: 'rgb(169,169,169)',
+          fontSize: 12,
+          textAlign: 'center',
+          marginVertical: width(25)
+        }}
+      >
+        {this.props.msg}
+      </Text>
+    )
+  }
+}
+
 // 状态栏 540 35
 // 页面 540 925
 // 头像 60 60
@@ -129,11 +146,15 @@ class RightMessage extends Component {
 @observer
 export default class WeiXin extends Component {
   getBody = () => {
-    let items = mobx.weiXinMessageList.map(({ msg, which }) => {
-      if (which === 'left') {
-        return <LeftMessage msg={msg} />
-      } else {
-        return <RightMessage msg={msg} />
+    let items = mobx.weiXinMessageList.map(({ msg, type, which, key }) => {
+      if (type === 'msg') {
+        if (which === 'left') {
+          return <LeftMessage key={key} msg={msg} />
+        } else {
+          return <RightMessage key={key} msg={msg} />
+        }
+      } else if (type === 'time') {
+        return <Time key={key} msg={msg} />
       }
     })
     return items

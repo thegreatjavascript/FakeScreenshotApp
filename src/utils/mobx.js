@@ -8,19 +8,28 @@ class Globe {
   @observable weiXinMessageList = [
     {
       msg: '测试',
-      which: 'left'
+      type: 'msg',
+      which: 'left',
+      key: 1
     },
+    { msg: '2018年4月1日 15:25', type: 'time', key: 2 },
     {
       msg: '测试2',
-      which: 'left'
+      type: 'msg',
+      which: 'left',
+      key: 3
     },
     {
       msg: '测试3',
-      which: 'right'
+      type: 'msg',
+      which: 'right',
+      key: 4
     },
     {
       msg: '测试4',
-      which: 'left'
+      type: 'msg',
+      which: 'left',
+      key: 5
     }
   ]
   @observable weiXinRightAvatar = require('../assets/images/kizuna-ai.jpg')
@@ -34,20 +43,23 @@ class Globe {
     this.weiXinRightMessage = text
   }
 
-  appendMessageToList(which) {
-    if (which === 'left') {
-      if (!this.weiXinLeftMessage) {
+  appendMessageToList(obj) {
+    if (obj.type === 'msg') {
+      if (!obj.msg) {
         return
       }
-      this.weiXinMessageList.push({ msg: this.weiXinLeftMessage, which })
-      this.weiXinLeftMessage = ''
-      return
+      if (obj.which === 'left') {
+        this.weiXinLeftMessage = ''
+      } else {
+        this.weiXinRightMessage = ''
+      }
+    } else if (obj.type === 'time') {
+      this.weiXinTime = ''
     }
-    if (!this.weiXinRightMessage) {
-      return
-    }
-    this.weiXinMessageList.push({ msg: this.weiXinRightMessage, which })
-    this.weiXinRightMessage = ''
+    this.weiXinMessageList.push({
+      ...obj,
+      key: new Date()
+    })
   }
 
   appendTimeToList(time) {
@@ -60,6 +72,10 @@ class Globe {
       return
     }
     this.weiXinRightAvatar = obj
+  }
+
+  updateWeiXinTime(time) {
+    this.weiXinTime = time
   }
 }
 

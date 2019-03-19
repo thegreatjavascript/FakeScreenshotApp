@@ -7,6 +7,32 @@ import { Drawer, Button } from 'teaset'
 import ImagePicker from 'react-native-image-picker'
 import mobx from '../utils/mobx'
 import { observer } from 'mobx-react'
+import { inputDialog } from './Dialog'
+
+@observer
+class TimeInput extends Component {
+  render() {
+    return (
+      <TextInput
+        style={{
+          marginVertical: 10,
+          padding: 10,
+          borderColor: '#DDDDDD',
+          color: '#000000',
+          borderRadius: 3,
+          height: 35,
+          borderWidth: 0.5,
+          width: '100%'
+        }}
+        onChangeText={text => mobx.updateWeiXinTime(text)}
+        value={mobx.weiXinTime}
+        placeholder={'添加时间'}
+        placeholderTextColor={'grey'}
+        maxLength={50}
+      />
+    )
+  }
+}
 
 @observer
 class BottomDrawer extends Component {
@@ -36,6 +62,18 @@ class BottomDrawer extends Component {
     })
   }
 
+  showTimeDialog = () => {
+    inputDialog.show('添加时间', {
+      content: <TimeInput />,
+      style: {
+        height: 150
+      },
+      cb: () => {
+        mobx.appendMessageToList({ type: 'time', msg: mobx.weiXinTime })
+      }
+    })
+  }
+
   render() {
     return (
       <View style={{ backgroundColor: '#FFFFFF', height: 260, margin: 15 }}>
@@ -46,6 +84,7 @@ class BottomDrawer extends Component {
           }}
         >
           <Button
+            onPress={this.showTimeDialog}
             size="sm"
             type="secondary"
             title="添加时间"
@@ -100,7 +139,13 @@ class BottomDrawer extends Component {
                 numberOfLines={3}
               />
               <Button
-                onPress={() => mobx.appendMessageToList('left')}
+                onPress={() =>
+                  mobx.appendMessageToList({
+                    type: 'msg',
+                    which: 'left',
+                    msg: mobx.weiXinLeftMessage
+                  })
+                }
                 size="sm"
                 title="添加"
                 style={{ width: 50, marginTop: 5 }}
@@ -159,7 +204,13 @@ class BottomDrawer extends Component {
                 numberOfLines={3}
               />
               <Button
-                onPress={() => mobx.appendMessageToList('right')}
+                onPress={() =>
+                  mobx.appendMessageToList({
+                    type: 'msg',
+                    which: 'right',
+                    msg: mobx.weiXinRightMessage
+                  })
+                }
                 size="sm"
                 title="添加"
                 style={{ width: 50, marginTop: 5 }}
