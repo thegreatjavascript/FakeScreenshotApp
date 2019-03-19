@@ -1,6 +1,25 @@
 import React, { Component } from 'react'
 import { View, Text, Image } from 'react-native'
-import { height, width } from '../../utils/rem'
+import { width } from '../../utils/rem'
+import mobx from '../../utils/mobx'
+import { observer } from 'mobx-react';
+
+@observer
+class Name extends Component {
+  render() {
+    return (
+      <Text
+        style={{
+          fontSize: 17,
+          color: '#000000',
+          marginLeft: width(15)
+        }}
+      >
+        {mobx.weiXinName}
+      </Text>
+    )
+  }
+}
 
 module.exports = class WeiXin extends Component {
   render() {
@@ -19,21 +38,13 @@ module.exports = class WeiXin extends Component {
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <Image
             style={{
-              width: width(30),
-              height: width(30),
+              width: width(26),
+              height: width(26),
               marginLeft: width(15)
             }}
             source={require('../../assets/images/chevron-left.png')}
           />
-          <Text
-            style={{
-              fontSize: 20,
-              color: '#000000',
-              marginLeft: width(15)
-            }}
-          >
-            欣
-          </Text>
+          <Name />
         </View>
         <Image
           style={{

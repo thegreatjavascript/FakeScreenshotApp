@@ -35,6 +35,31 @@ class TimeInput extends Component {
 }
 
 @observer
+class UserName extends Component {
+  render() {
+    return (
+      <TextInput
+        style={{
+          marginVertical: 10,
+          padding: 10,
+          borderColor: '#DDDDDD',
+          color: '#000000',
+          borderRadius: 3,
+          height: 35,
+          borderWidth: 0.5,
+          width: '100%'
+        }}
+        onChangeText={text => mobx.updateWeiXinName(text)}
+        value={mobx.weiXinName}
+        placeholder={'添加时间'}
+        placeholderTextColor={'grey'}
+        maxLength={50}
+      />
+    )
+  }
+}
+
+@observer
 class BottomDrawer extends Component {
   appendMessage = () => {}
 
@@ -74,19 +99,37 @@ class BottomDrawer extends Component {
     })
   }
 
+  modifyName = () => {
+    inputDialog.show('修改对方用户名', {
+      content: <UserName />,
+      style: {
+        height: 150
+      }
+    })
+  }
+
   render() {
     return (
       <View style={{ backgroundColor: '#FFFFFF', height: 260, margin: 15 }}>
         <View
           style={{
             alignItems: 'center',
-            marginBottom: 10
+            justifyContent: 'center',
+            marginBottom: 10,
+            flexDirection: 'row'
           }}
         >
           <Button
+            onPress={this.modifyName}
+            size="sm"
+            type="link"
+            title="修改对方名称"
+            style={{ width: 90 }}
+          />
+          <Button
             onPress={this.showTimeDialog}
             size="sm"
-            type="secondary"
+            type="link"
             title="添加时间"
             style={{ width: 80 }}
           />

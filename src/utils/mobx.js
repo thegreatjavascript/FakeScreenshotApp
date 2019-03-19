@@ -5,6 +5,7 @@ class Globe {
 
   @observable weiXinLeftMessage = ''
   @observable weiXinRightMessage = ''
+  @observable weiXinName = '林水溶'
   @observable weiXinMessageList = [
     {
       msg: '测试',
@@ -76,6 +77,9 @@ class Globe {
 
   updateWeiXinTime(time) {
     this.weiXinTime = time
+  }
+  updateWeiXinName(name) {
+    this.weiXinName = name
   }
 }
 
