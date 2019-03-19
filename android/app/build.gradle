@@ -91,7 +91,6 @@ project.ext.react = [
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
-apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -108,20 +107,17 @@ def enableSeparateBuildPerCPUArchitecture = false
  */
 def enableProguardInReleaseBuilds = false
 
-def pass = getPassword("shuirong1997","FakeScreenshot_keystore")
-
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
+def pass = getPassword("shuirong1997","fakeScreen_keystore")
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.FakeScreenshot"
+        applicationId "com.fakeScreen"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "1.0.0"
+        versionName "1.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -145,21 +141,10 @@ android {
         }
     }
     buildTypes {
-        debug{
-            minifyEnabled false //开启混淆
-            zipAlignEnabled false
-            shrinkResources false    // 移除无用的resource文件
-            signingConfig signingConfigs.release
-            buildConfigField "String", "CODEPUSH_KEY", '"'+properties.getProperty("code_push_key_staging")+'"'
-            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-        }
-
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             signingConfig signingConfigs.release
-              buildConfigField "String", "CODEPUSH_KEY", '"'+properties.getProperty("code_push_key_production")+'"'
-
         }
     }
     // applicationVariants are e.g. debug, release
@@ -184,10 +169,8 @@ configurations.all {
 }
 
 dependencies {
-    compile project(':react-native-view-shot')
     compile project(':react-native-extra-dimensions-android')
-    compile project(':react-native-svg')
-    compile project(':react-native-code-push')
+    compile project(':react-native-view-shot')
     compile project(':react-native-spinkit')
     compile project(':react-native-image-picker')
     // compile project(':react-native-popover-menu')
@@ -205,20 +188,4 @@ dependencies {
 task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
-}
-
-configurations.all {
-    //循环一个个的依赖库
-    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-        //获取当前循环到的依赖库
-        def requested = details.requested
-        //如果这个依赖库群组的名字是com.android.support
-        if (requested.group == 'com.android.support') {
-            //且其名字不是以multidex开头的
-            if (!requested.name.startsWith("multidex")) {
-                //这里指定需要统一的依赖版本
-                details.useVersion '26.1.0'
-            }
-        }
-    }
 }

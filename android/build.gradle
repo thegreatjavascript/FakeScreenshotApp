@@ -41,7 +41,8 @@ allprojects {
     }
 
     repositories {
-	    // Add jitpack repository (added by react-native-spinkit)
+				// Add jitpack repository (added by react-native-spinkit)
+				maven { url "https://jitpack.io" }
         mavenLocal()
         google()
         jcenter()
@@ -53,7 +54,6 @@ allprojects {
            // Local Maven repo containing AARs with JSC library built for Android
            url "$rootDir/../node_modules/jsc-android/dist"
        }
-       maven { url "https://jitpack.io" }
     }
 }
 
