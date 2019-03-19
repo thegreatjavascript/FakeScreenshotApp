@@ -23,8 +23,8 @@ class Globe {
       which: 'left'
     }
   ]
-  @observable weiXinRightAvatar = require('../assets/images/plus.png')
-  @observable weiXinLeftAvatar = require('../assets/images/voice.png')
+  @observable weiXinRightAvatar = require('../assets/images/kizuna-ai.jpg')
+  @observable weiXinLeftAvatar = require('../assets/images/huhu.jpg')
 
   updateWeiXinLeftMessage(text) {
     this.weiXinLeftMessage = text

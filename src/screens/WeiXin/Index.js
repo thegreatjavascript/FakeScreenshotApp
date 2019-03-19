@@ -15,6 +15,7 @@ const Bottom = Platform.select({
   ios: () => require('./Bottom.iOS.js')
 })()
 
+@observer
 class LeftMessage extends Component {
   render() {
     return (
@@ -27,7 +28,12 @@ class LeftMessage extends Component {
       >
         <Image
           source={mobx.weiXinLeftAvatar}
-          style={{ width: width(60), height: width(60) }}
+          resizeMode={'cover'}
+          style={{
+            width: width(60),
+            height: width(60),
+            borderRadius: width(5)
+          }}
         />
         <View>
           <Text
@@ -61,6 +67,7 @@ class LeftMessage extends Component {
   }
 }
 
+@observer
 class RightMessage extends Component {
   render() {
     return (
@@ -100,8 +107,13 @@ class RightMessage extends Component {
           />
         </View>
         <Image
-          source={mobx.weiXinLeftAvatar}
-          style={{ width: width(60), height: width(60) }}
+          source={mobx.weiXinRightAvatar}
+          resizeMode={'cover'}
+          style={{
+            width: width(60),
+            height: width(60),
+            borderRadius: width(5)
+          }}
         />
       </View>
     )

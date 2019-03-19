@@ -28,7 +28,7 @@ class BottomDrawer extends Component {
     ImagePicker.showImagePicker(options, response => {
       if (response.didCancel) {
       } else if (response.error) {
-        alert(JSON.stringify(response.error))
+        console.log(response.error)
       } else {
         const source = { uri: response.uri }
         mobx.updateWeiXinAvatar(source, which)
@@ -63,8 +63,13 @@ class BottomDrawer extends Component {
             >
               <Image
                 source={mobx.weiXinLeftAvatar}
-                resizeMode={'contain'}
-                style={{ width: 40, marginRight: 10 }}
+                resizeMode={'cover'}
+                style={{
+                  width: 40,
+                  height: 40,
+                  marginRight: 10,
+                  borderRadius: 5
+                }}
               />
               <Button
                 onPress={() => this.pickImage('left')}
@@ -118,8 +123,13 @@ class BottomDrawer extends Component {
               />
               <Image
                 source={mobx.weiXinRightAvatar}
-                resizeMode={'contain'}
-                style={{ width: 40, marginLeft: 10 }}
+                resizeMode={'cover'}
+                style={{
+                  width: 40,
+                  height: 40,
+                  marginLeft: 10,
+                  borderRadius: 5
+                }}
               />
             </View>
             <View
